@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="" th:href="@{/style.css}">
+    <title>Document</title>
+</head>
+<body>
+<section>
+    <div class="card w-50 m-auto mt-3 text-center">
+        <h1 class="text-center mb-2">View Employee</h1>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Domain</th>
+                <th scope="col">Projects</th>
+                <th scope="col">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="employee : ${employees}">
+                <td th:text="${employee.id}"></td>
+                <td th:text="${employee.name}"></td>
+                <td th:text="${employee.domain}"></td>
+                <td>
+                    <a th:href="@{/updateProject/{id}(id=${employee.id})}" type="button" class="btn btn-success">Add</a>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            Action
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-item" th:each="empProject:${employee.projects}" th:text="${empProject.name}" ></li>
+                        </ul>
+                    </div>
+                </td>
+                <td>
+                    <a th:href="@{/deleteEmployee/{id}(id=${employee.id})}" type="button" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <div class="btnbutton">
+        <a th:href="@{/homes}" type="button" class="btn btn-warning block m-auto mt-2" style="display: block; width: 10%">Back To Home</a>
+    </div>
+</section>
+
+</body>
+</html>

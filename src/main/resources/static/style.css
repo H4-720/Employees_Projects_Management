@@ -1,0 +1,17 @@
+body{
+    background: azure;
+}
+.container1{
+    background: white;
+    text-align: center;
+}
+.dialog{
+    margin-top: 30vh;
+}
+.const{
+    display: block;
+    margin: auto;
+}
+.cads a{
+    text-decoration: none;
+}
